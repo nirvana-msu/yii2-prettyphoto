@@ -30,11 +30,13 @@ class PrettyPhotoAsset extends AssetBundle
     {
         parent::init();
         $this->publishOptions['beforeCopy'] = function ($from) {
-            $dirName = str_replace(realpath(Yii::getAlias('@bower') . '\jquery-prettyPhoto'), '', $from);
+            $path = str_replace(realpath(Yii::getAlias('@bower') . '\jquery-prettyPhoto'), '', $from);
             return
-                (0 === strpos($dirName, DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'prettyPhoto'))
-                || (0 === strpos($dirName, DIRECTORY_SEPARATOR.'css'))
-                || (0 === strpos($dirName, DIRECTORY_SEPARATOR.'js'));
+                $path === DIRECTORY_SEPARATOR.'images'
+                || (0 === strpos($path, DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'prettyPhoto'))
+                || (0 === strpos($path, DIRECTORY_SEPARATOR.'css'))
+                || $path === DIRECTORY_SEPARATOR.'js'
+                || $path === DIRECTORY_SEPARATOR.'js'.DIRECTORY_SEPARATOR.'jquery.prettyPhoto.js';
         };
     }
 }
