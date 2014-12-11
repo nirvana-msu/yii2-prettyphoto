@@ -37,6 +37,7 @@
             "type": "package",
             "package": {
                 "name": "bower-asset/jquery-prettyPhoto",
+                "type": "bower-asset-library",
                 "version": "3.1.4",
                 "source": {
                     "url": "https://github.com/scaron/prettyphoto",
