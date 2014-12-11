@@ -7,6 +7,7 @@
 
 namespace nirvana\prettyphoto;
 
+use Yii;
 use yii\web\AssetBundle;
 
 /**
@@ -29,8 +30,8 @@ class PrettyPhotoAsset extends AssetBundle
     {
         parent::init();
         $this->publishOptions['beforeCopy'] = function ($from) {
-            $dirName = dirname($from);
-            return $dirName === '/images/prettyPhoto' || $dirName === '/css' || $dirName === '/js';
+            $dirName = str_replace(realpath(Yii::getAlias('@bower').'\jquery-prettyPhoto'), '', dirname($from));
+            return $dirName === 'images/prettyPhoto' || $dirName === 'css' || $dirName === 'js';
         };
     }
 }
