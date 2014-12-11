@@ -1,0 +1,49 @@
+{
+    "name": "nirvana-msu/yii2-prettyphoto",
+    "description": "Yii2 extension for prettyPhoto jQuery lightbox clone",
+    "keywords": [
+        "yii2",
+        "prettyPhoto",
+        "widget"
+    ],
+    "type": "yii2-extension",
+    "license": "GPL-2.0",
+    "support": {
+        "issues": "https://github.com/nirvana-msu/yii2-prettyphoto/issues",
+        "source": "https://github.com/nirvana-msu/yii2-prettyphoto"
+    },
+    "authors": [
+        {
+            "name": "Alexander Stepanov",
+            "email": "student_vmk@mail.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/jquery-prettyPhoto": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nirvana\\prettyphoto\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "bower-asset/jquery-prettyPhoto",
+                "version": "3.1.4",
+                "source": {
+                    "url": "https://github.com/scaron/prettyphoto",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ]
+}
