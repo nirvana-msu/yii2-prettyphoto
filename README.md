@@ -16,9 +16,9 @@ First of all, add extension to your composer.json:
     }
 }
 ```
-Unfortunately, [scaron/prettyphoto](https://github.com/scaron/prettyphoto) repository has not been updated in several years and does not contain bower.json which would allow composer to install it.
+Unfortunately, [scaron/prettyphoto](https://github.com/scaron/prettyphoto) repository has not been updated in several years and does not contain `bower.json` which would allow composer to install it.
 
-Instead of copying over the files manually or creating yet another fork just to add bower.json, this extension defines the required repository package inline.
+Instead of copying over the files manually or creating yet another fork just to add `bower.json`, this extension defines the required repository package inline.
 Since composer does not inherit "repositories" section, you have to add the same section to your own composer.json:
 
 ```js
