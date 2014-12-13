@@ -3,6 +3,8 @@ yii2-prettyphoto
 
 Yii2 widget for prettyPhoto jQuery lightbox clone [scaron/prettyphoto](https://github.com/scaron/prettyphoto)
 
+Yii2 [extension page](http://www.yiiframework.com/extension/yii2-prettyphoto)
+
 ## Installation
 
 ### Composer
