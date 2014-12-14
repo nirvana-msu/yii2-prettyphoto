@@ -45,34 +45,36 @@ After this just update your dependencies as usual, e.g. by running `composer upd
 
 ##Widget Configuration
 
-You can pass any configuration to plugin using `options` setting. For more information refer to [prettyPhoto documentation](http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/)
-
-Additionally, widget allows to configure the following settings:
-
-* `$htmlOptions` *array* HTML options for the enclosing tag
-* `$gallery = true` *boolean* Whether PrettyPhoto is in gallery (many items) mode
-* `$tag = 'div'` *string* The enclosing tag
-* `$theme = PrettyPhoto::THEME_DEFAULT` *string* The PrettyPhoto theme to use
+* `$target = "a[rel^='prettyPhoto']"` *string* jQuery target selector
+* `$pluginOptions = []` *array* PrettyPhoto plugin options. For more information refer to [prettyPhoto documentation](http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/)
 
 ##Sample usage
 
+Rendering widget will produce the necessary javascript code to register plugin.
+
+Using default configuration:
 ``` php
-PrettyPhoto::begin([
-    'id' => 'pretty_photo',
-    'options' => [
+PrettyPhoto::widget([]);
+```
+
+Customizing some plugin options:
+``` php
+PrettyPhoto::widget([
+    'target' => "a[rel^='prettyPhoto']",
+    'pluginOptions' => [
         'opacity' => 0.60,
         'theme' => PrettyPhoto::THEME_DARK_SQUARE,
+        'social_tools' => false,
+        'autoplay_slideshow' => true,
+        'modal' => true
     ],
 ]);
-
-echo your image links;
-
-PrettyPhoto::end();
 ```
-Content links do not require the `rel="prettyPhoto"` attribute; this is added by the widget.
 
-##License and Attribution
+To activate plugin, add `rel=”prettyPhoto”` attribute for single images and `rel="prettyPhoto[gallery-name]` for galleries.
+These attributes must match target selector as configured by `$target` property.
+Refer to [prettyPhoto documentation](http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/) for more examples.
+
+##License
 
 Released under GPL-2.0 license, same as underlying [prettyPhoto](http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/) plugin.
-
-Inspired by [Yii 1.1: prettyphoto](http://www.yiiframework.com/extension/prettyphoto/) extension.

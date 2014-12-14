@@ -9,7 +9,6 @@ namespace nirvana\prettyphoto;
 
 use Yii;
 use yii\base\Widget;
-use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\View;
 
@@ -26,29 +25,14 @@ class PrettyPhoto extends Widget
     const THEME_LIGHT_SQUARE = 'light_square';
 
     /**
-     * @property array HTML options for the enclosing tag
+     * @property string $target jQuery target selector
      */
-    public $htmlOptions;
+    public $target = "a[rel^='prettyPhoto']";
 
     /**
-     * @property boolean Whether PrettyPhoto is in gallery (many items) mode
+     * @property array $pluginOptions PrettyPhoto plugin options
      */
-    public $gallery = true;
-
-    /**
-     * @property array Additional options for PrettyPhoto
-     */
-    public $options = array();
-
-    /**
-     * @property string The enclosing tag
-     */
-    public $tag = 'div';
-
-    /**
-     * @property string The PrettyPhoto theme to use
-     */
-    public $theme = self::THEME_DEFAULT;
+    public $pluginOptions = [];
 
     public function init()
     {
@@ -56,26 +40,7 @@ class PrettyPhoto extends Widget
 
         PrettyPhotoAsset::register($this->view);
 
-        $id = $this->getId();
-        if (isset($this->htmlOptions['id']))
-            $id = $this->htmlOptions['id'];
-        else
-            $this->htmlOptions['id'] = $id;
-
-        echo Html::beginTag($this->tag, $this->htmlOptions) . "\n";
-
-        if (empty($this->options['theme']))
-            $this->options['theme'] = $this->theme;
-        $options = empty($this->options) ? '' : Json::encode($this->options);
-
-        $this->view->registerJs("
-			jQuery('#$id a').attr('rel','prettyPhoto" . ($this->gallery ? '[]' : '') . "');
-			jQuery('a[rel^=\"prettyPhoto\"]').prettyPhoto(" . $options . ');
-		', View::POS_END, 'prettyphoto-options');
-    }
-
-    public function run()
-    {
-        echo Html::endTag($this->tag);
+        $this->view->registerJs("jQuery(" . $this->target . ").prettyPhoto(" . Json::encode($this->pluginOptions) . ');',
+            View::POS_END, 'prettyphoto-init');
     }
 }
