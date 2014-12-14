@@ -54,7 +54,7 @@ Rendering widget will produce the necessary javascript code to register plugin.
 
 Using default configuration:
 ``` php
-PrettyPhoto::widget([]);
+PrettyPhoto::widget();
 ```
 
 Customizing some plugin options:
@@ -71,7 +71,7 @@ PrettyPhoto::widget([
 ]);
 ```
 
-To activate plugin, add `rel=”prettyPhoto”` attribute for single images and `rel="prettyPhoto[gallery-name]` for galleries.
+To activate plugin, add `rel=”prettyPhoto”` attribute for single images and `rel="prettyPhoto[gallery-name]”` for galleries.
 These attributes must match target selector as configured by `$target` property.
 Refer to [prettyPhoto documentation](http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/) for more examples.
 

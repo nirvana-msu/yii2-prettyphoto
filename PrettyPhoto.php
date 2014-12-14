@@ -40,7 +40,7 @@ class PrettyPhoto extends Widget
 
         PrettyPhotoAsset::register($this->view);
 
-        $this->view->registerJs("jQuery(" . $this->target . ").prettyPhoto(" . Json::encode($this->pluginOptions) . ');',
+        $this->view->registerJs("jQuery(\"" . $this->target . "\").prettyPhoto(" . Json::encode($this->pluginOptions) . ');',
             View::POS_END, 'prettyphoto-init');
     }
 }
